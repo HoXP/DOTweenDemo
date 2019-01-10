@@ -239,10 +239,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
-    <Compile Include="Assets\Scripts\Define.cs" />
-    <Compile Include="Assets\Scripts\DOTweenTest.cs" />
-    <Compile Include="Assets\Scripts\Main.cs" />
-    <Compile Include="Assets\Scripts\ScaleTest.cs" />
+    <Compile Include="Assets\Scripts\Launcher.cs" />
     <Compile Include="Assets\Scripts\TestManager.cs" />
   </ItemGroup>
   <ItemGroup>

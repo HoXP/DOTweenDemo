@@ -14,17 +14,4 @@
             return _instance;
         }
     }
-
-    private DOTweenTest _testScritp = null;
-    public DOTweenTest TestScritp
-    {
-        get
-        {
-            return _testScritp;
-        }
-        set
-        {
-            _testScritp = value;
-        }
-    }
 }

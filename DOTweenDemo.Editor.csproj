@@ -305,8 +305,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
-    <Compile Include="Assets\Scripts\Editor\ParamsWindow.cs" />
-    <Compile Include="Assets\Scripts\Editor\ScaleTestEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Demigiant\DOTween\DOTween.XML" />
