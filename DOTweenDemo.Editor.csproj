@@ -304,6 +304,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Common\Editor\CopyAssetPath2Clipboard.cs" />
     <Compile Include="Assets\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
   </ItemGroup>
   <ItemGroup>

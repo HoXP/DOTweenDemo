@@ -24,9 +24,19 @@ public class Launcher : MonoBehaviour
              * 设置Tweener和Sequence容量，默认为200，50。
              */
             .SetCapacity(100, 30);
+        //
+        gameObject.AddComponent<UIManager>();
+    }
+
+    private void Start()
+    {
+        UIManager.Instance.ShowPanel(UIPanelName.UIMain);
     }
 
     private void OnEnable()
     {
     }
 }
+
+//TODO
+//static DOTween.To(getter, setter, to, float duration)

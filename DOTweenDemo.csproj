@@ -241,6 +241,10 @@
     <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
     <Compile Include="Assets\Scripts\Launcher.cs" />
     <Compile Include="Assets\Scripts\TestManager.cs" />
+    <Compile Include="Assets\Scripts\UIAudioSource.cs" />
+    <Compile Include="Assets\Scripts\UIBasePanel.cs" />
+    <Compile Include="Assets\Scripts\UIMain.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Demigiant\DOTween\DOTween.XML" />
