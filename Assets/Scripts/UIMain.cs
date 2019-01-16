@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIMain : UIBasePanel
@@ -19,11 +19,6 @@ public class UIMain : UIBasePanel
     {
 
     }
-    
-    void Update()
-    {
-
-    }
 
     private void OnClickBtnAudioSource()
     {
@@ -32,6 +27,6 @@ public class UIMain : UIBasePanel
 
     private void OnClickBtnamera()
     {
-
+        SceneManager.LoadScene("DOTweenCamera");
     }
 }
