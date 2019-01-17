@@ -21,7 +21,7 @@ public class UIAudioSource : UIBasePanel
     private Text _txtVal = null;
     private Button _btnDo = null;
 
-    protected override void Init()
+    internal override void Init()
     {
         base.Init();
         

@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ColorPicker : MonoBehaviour
 {
     private RectTransform rt = null;
-    private Button _btnColor = null;
-    private RawImage _imgColor = null;
-    private RectTransform _tranPanel = null;
-    private Button _btnClose = null;
+    internal Graphic graphic { get; set; }
 
     private ColorDisc CP;
     private ColorRGB CRGB;
@@ -20,24 +18,13 @@ public class ColorPicker : MonoBehaviour
     {
         get
         {
-            return _imgColor == null ? Color.white : _imgColor.color;
+            return graphic == null ? Color.white : graphic.color;
         }
     }
 
     private void Awake()
     {
         rt = GetComponent<RectTransform>();
-        _tranPanel = transform.Find("Panel").GetComponent<RectTransform>();
-        _tranPanel.gameObject.SetActive(false);
-        _btnColor = transform.Find("btnColor").GetComponent<Button>();
-        _btnColor.onClick.AddListener(delegate () {
-            _tranPanel.gameObject.SetActive(true);
-        });
-        _imgColor = transform.Find("btnColor").GetComponent<RawImage>();
-        _btnClose = transform.Find("Panel/btnClose").GetComponent<Button>();
-        _btnClose.onClick.AddListener(delegate () {
-            _tranPanel.gameObject.SetActive(false);
-        });
 
         CP = transform.Find("Panel/BG/ColorDisc").GetComponent<ColorDisc>();
         CRGB = transform.Find("Panel/BG/RGB").GetComponent<ColorRGB>();
@@ -50,17 +37,17 @@ public class ColorPicker : MonoBehaviour
 
     private void OnEnable()
     {
-        CP.getPos += CC_getPos;
+        CP.GetPos += GetPos;
     }
     private void OnDisable()
     {
-        CP.getPos -= CC_getPos;
+        CP.GetPos -= GetPos;
     }
 
-    private void CC_getPos(Vector2 pos)
+    private void GetPos(Vector2 pos)
     {
         Color getColor = CP.GetColorByPosition(pos);
-        _imgColor.color = getColor;
+        graphic.color = getColor;
     }
 
     private void OnCRGBValueChanged(float value)
@@ -72,6 +59,11 @@ public class ColorPicker : MonoBehaviour
 
     private void OnCAValueChanged(float arg0)
     {
-        _imgColor.color = new Color(_imgColor.color.r, _imgColor.color.g, _imgColor.color.b, 1 - arg0);
+        graphic.color = new Color(graphic.color.r, graphic.color.g, graphic.color.b, 1 - arg0);
+    }
+
+    internal void SetColorChangeCallback(UnityAction ua)
+    {
+
     }
 }

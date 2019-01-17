@@ -15,7 +15,7 @@ public class ColorDisc : MonoBehaviour
     private RawImage _imgDisc = null;
 
     public delegate void RetureTextuePosition(Vector2 pos);
-    public event RetureTextuePosition getPos;
+    public event RetureTextuePosition GetPos;
 
     private void Awake()
     {
@@ -110,6 +110,6 @@ public class ColorDisc : MonoBehaviour
 
     public void SetShowColor()
     {
-        getPos(_tranCircle.anchoredPosition);
+        GetPos(_tranCircle.anchoredPosition);
     }
 }

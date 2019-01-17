@@ -5,8 +5,8 @@ public class UIMain : UIBasePanel
 {
     private Button _btnAudioSource = null;
     private Button _btnCamera = null;
-    
-    protected override void Init()
+
+    internal override void Init()
     {
         base.Init();
         _btnAudioSource = transform.Find("Adapter/GLO/btnAudioSource").GetComponent<Button>();
@@ -27,6 +27,7 @@ public class UIMain : UIBasePanel
 
     private void OnClickBtnamera()
     {
+        UIManager.Instance.ShowPanel(UIPanelName.UICameraPanel);
         SceneManager.LoadScene("DOTweenCamera");
     }
 }

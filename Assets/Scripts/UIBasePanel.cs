@@ -8,18 +8,33 @@ public class UIBasePanel : MonoBehaviour
     private Button _btnClose = null;
     private Button _btnHome = null;
 
+    protected object[] _param = null;
+    internal object[] Param
+    {
+        set
+        {
+            _param = value;
+        }
+    }
+
     private void Awake()
     {
         FindComponent<Button>("Adapter/btnClose", _btnClose, OnClickBtnClose);
         FindComponent<Button>("Adapter/btnHome", _btnHome, OnClickBtnHome);
-        Init();
     }
 
     private void Start()
     {
 
     }
-    protected virtual void Init()
+    private void OnDestroy()
+    {
+        _param = null;
+        _btnClose = null;
+        _btnHome = null;
+    }
+
+    internal virtual void Init()
     {
 
     }

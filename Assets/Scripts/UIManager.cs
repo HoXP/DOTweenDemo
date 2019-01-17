@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
     {
     }
 
-    internal void ShowPanel(string panelName)
+    internal void ShowPanel(string panelName, params object[] param)
     {
         if(_dictPanel.ContainsKey(panelName))
         {
@@ -48,6 +48,8 @@ public class UIManager : MonoBehaviour
             initPanel.gameObject.name = panelName;
             initPanel.transform.localScale = Vector3.one;
             initPanel.transform.localPosition = Vector3.zero;
+            initPanel.Param = param;
+            initPanel.Init();
             _dictPanel.Add(panelName, initPanel);
         }
     }
@@ -74,4 +76,6 @@ public class UIPanelName
 {
     public const string UIMain = "UIMain";
     public const string UIAudioSource = "UIAudioSource";
+    public const string UICameraPanel = "UICameraPanel";
+    public const string UIColorPicker = "UIColorPicker";
 }

@@ -242,6 +242,7 @@
     <Compile Include="Assets\Common\ColorPicker\ColorDisc.cs" />
     <Compile Include="Assets\Common\ColorPicker\ColorPicker.cs" />
     <Compile Include="Assets\Common\ColorPicker\ColorRGB.cs" />
+    <Compile Include="Assets\Common\VectorInputField\VectorInputField.cs" />
     <Compile Include="Assets\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
@@ -293,6 +294,7 @@
     <Compile Include="Assets\Scripts\UIAudioSource.cs" />
     <Compile Include="Assets\Scripts\UIBasePanel.cs" />
     <Compile Include="Assets\Scripts\UICameraPanel.cs" />
+    <Compile Include="Assets\Scripts\UIColorPicker.cs" />
     <Compile Include="Assets\Scripts\UIMain.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
   </ItemGroup>

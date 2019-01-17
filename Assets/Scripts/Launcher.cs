@@ -26,6 +26,10 @@ public class Launcher : MonoBehaviour
             .SetCapacity(100, 30);
         //
         gameObject.AddComponent<UIManager>();
+        DontDestroyOnLoad(transform.gameObject);
+        DontDestroyOnLoad(GameObject.Find("UICamera"));
+        DontDestroyOnLoad(GameObject.Find("UIRoot"));
+        DontDestroyOnLoad(GameObject.Find("EventSystem"));
     }
 
     private void Start()
