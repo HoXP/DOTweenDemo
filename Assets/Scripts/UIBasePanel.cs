@@ -27,7 +27,7 @@ public class UIBasePanel : MonoBehaviour
     {
 
     }
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         _param = null;
         _btnClose = null;

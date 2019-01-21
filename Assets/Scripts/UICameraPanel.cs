@@ -36,9 +36,11 @@ public class UICameraPanel : UIBasePanel
     private Text _txtVal = null;
     private Button _btnDo = null;
 
+    private Transform _tranSceneRoot = null;
+
     private void Awake()
     {
-        _cam = Camera.main;
+        _cam = GameObject.Find("Camera").GetComponent<Camera>();
         _dpdFunc = transform.Find("Adapter/dpdFunc").GetComponent<Dropdown>();
         DoCamera[] values = Enum.GetValues(typeof(DoCamera)) as DoCamera[];
         for (int i = 0; i < values.Length; i++)
@@ -61,6 +63,8 @@ public class UICameraPanel : UIBasePanel
         _txtVal = transform.Find("Adapter/txtVal").GetComponent<Text>();
         _btnDo = transform.Find("Adapter/btnDo").GetComponent<Button>();
         _btnDo.onClick.AddListener(OnClickBtnDo);
+
+        _tranSceneRoot = GameObject.Find("SceneRoot").transform;
     }
     private void Start()
     {
@@ -74,6 +78,14 @@ public class UICameraPanel : UIBasePanel
     internal override void Init()
     {
         base.Init();
+        LoadScene();
+    }
+
+    private void LoadScene()
+    {
+        GameObject go = Resources.Load<GameObject>("Prefabs/3D/island");
+        GameObject init = GameObject.Instantiate(go, _tranSceneRoot);
+        init.name = go.name;
     }
 
     private void ShowHideConfig()
@@ -95,12 +107,16 @@ public class UICameraPanel : UIBasePanel
                 _btnColor.gameObject.SetActive(true);
                 break;
             case DoCamera.DOFarClipPlane:
+                _iptTo.gameObject.SetActive(true);
                 break;
             case DoCamera.DOFieldOfView:
+                _iptTo.gameObject.SetActive(true);
                 break;
             case DoCamera.DONearClipPlane:
+                _iptTo.gameObject.SetActive(true);
                 break;
             case DoCamera.DOOrthoSize:
+                _iptTo.gameObject.SetActive(true);
                 break;
             case DoCamera.DOPixelRect:
                 break;
@@ -124,6 +140,15 @@ public class UICameraPanel : UIBasePanel
         base.OnClickBtnHome();
         _txtVal.text = "1";
         _cam.aspect = 1.777778f;
+        _cam.backgroundColor = Color.black;
+        _cam.farClipPlane = 100;
+        _cam.fieldOfView = 60;
+        _cam.nearClipPlane = 1;
+        _cam.orthographicSize = 5;
+        _cam.pixelRect = new Rect(0, 0, 1280, 720);
+        _cam.rect = new Rect(0, 0, 1, 1);
+        _cam.transform.localPosition = new Vector3(-0.1f, 14.3f, -26.7f);
+        _cam.transform.localRotation = Quaternion.Euler(30, -0.1f, -0.2f);
     }
 
     private void OnClickBtnColor()
@@ -182,14 +207,14 @@ public class UICameraPanel : UIBasePanel
                 _cam.DOOrthoSize(endValue, duration).OnUpdate(() => { UpdateFloat(_cam.orthographicSize); });
                 break;
             case DoCamera.DOPixelRect:
-                rct = new Rect();
+                rct = new Rect(0,0,640, 360);
                 /*
                  * duration秒内将一个Camera的pixelRect（像素矩形）Tween到endValue
                  */
                 _cam.DOPixelRect(rct, duration).OnUpdate(() => { print(string.Format("### pixelRect={0}", _cam.pixelRect)); });
                 break;
             case DoCamera.DORect:
-                rct = new Rect();
+                rct = new Rect(0,0,.5f,.5f);
                 /*
                  * duration秒内将一个Camera的orthographicSize（正交模式下size的一半）Tween到endValue
                  */
@@ -197,11 +222,15 @@ public class UICameraPanel : UIBasePanel
                 break;
             case DoCamera.DOShakePosition:
                 /*
-                 * 震动Camera持续duration秒内
+                 * Camera位置抖动持续duration秒
                  */
                 _cam.DOShakePosition(duration);
                 break;
             case DoCamera.DOShakeRotation:
+                /*
+                 * Camera角度抖动持续duration秒
+                 */
+                _cam.DOShakeRotation(duration);
                 break;
         }
     }
@@ -232,5 +261,13 @@ public class UICameraPanel : UIBasePanel
                 break;
         }
         _txtVal.text = val.ToString();
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        Transform child = _tranSceneRoot.GetChild(0);
+        GameObject.Destroy(child.gameObject);
+        Resources.UnloadUnusedAssets();
     }
 }

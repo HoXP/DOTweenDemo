@@ -28,6 +28,5 @@ public class UIMain : UIBasePanel
     private void OnClickBtnamera()
     {
         UIManager.Instance.ShowPanel(UIPanelName.UICameraPanel);
-        SceneManager.LoadScene("DOTweenCamera");
     }
 }

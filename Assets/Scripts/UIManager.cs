@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            UIBasePanel panel = Resources.Load<UIBasePanel>(string.Format("Prefabs/{0}", panelName));
+            UIBasePanel panel = Resources.Load<UIBasePanel>(string.Format("Prefabs/UI/{0}", panelName));
             UIBasePanel initPanel = GameObject.Instantiate<UIBasePanel>(panel, _tranUIRoot);
             initPanel.gameObject.name = panelName;
             initPanel.transform.localScale = Vector3.one;
